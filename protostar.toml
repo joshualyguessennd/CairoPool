@@ -1,5 +1,5 @@
 ["protostar.config"]
-protostar_version = "0.3.0"
+protostar_version = "0.3.2"
 
 ["protostar.project"]
 libs_path = "lib"
@@ -7,6 +7,10 @@ libs_path = "lib"
 ["protostar.contracts"]
 a_token = [
     "contracts/protocol/a_token.cairo",
+]
+
+pool = [
+    "contracts/protocol/pool.cairo",
 ]
 
 ["protostar.shared_command_configs"]

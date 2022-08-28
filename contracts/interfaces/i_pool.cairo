@@ -29,4 +29,7 @@ namespace IPool:
 
     func get_reserve_normalized_income(asset : felt) -> (res : Uint256):
     end
+
+    func get_user_balance(address : felt) -> (res : Uint256):
+    end
 end

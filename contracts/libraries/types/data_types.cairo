@@ -7,6 +7,18 @@ namespace DataTypes:
         member liquidity_index : Uint256
     end
 
+    struct SupplyData:
+        member asset : felt
+        member amount : Uint256
+        member on_behalf_of : felt
+    end
+
+    struct WithdrawData:
+        member asset : felt
+        member amount : Uint256
+        member to : felt
+    end
+
     struct UserState:
         member balance : Uint256
         member additional_data : Uint256
