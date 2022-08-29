@@ -85,7 +85,7 @@ func test_drop_reserve{syscall_ptr : felt*, range_check_ptr, pedersen_ptr : Hash
 end
 
 @view
-func test_supply{syscall_ptr : felt*, range_check_ptr, pedersen_ptr : HashBuiltin*}():
+func test_supply_and_withdraw{syscall_ptr : felt*, range_check_ptr, pedersen_ptr : HashBuiltin*}():
     alloc_locals
     let (local pool, local token, local a_token) = get_contract_addresses()
     IPool.init_reserve(pool, token, a_token)

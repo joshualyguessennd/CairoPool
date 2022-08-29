@@ -156,6 +156,7 @@ func remove_liquidity{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_ch
     let (pool_reserve) = reserve.read(params.asset)
     let (userData) = user.read(caller)
 
+    # check if caller has enough liquidity of aToken
     let caller_balance = userData.balance
     let (is_up) = uint256_le(params.amount, caller_balance)
 
@@ -163,6 +164,12 @@ func remove_liquidity{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_ch
         assert is_up = TRUE
     end
 
+    # update struct user
+    let new_balance : Uint256 = Uint256(caller_balance.low - params.amount.low, 0)
+    user_write(
+        caller, userData=DataTypes.UserState(balance=new_balance, additional_data=Uint256(0, 0))
+    )
+    # burn aToken
     IAToken.burn(
         contract_address=pool_reserve.a_token_address,
         from_=caller,
